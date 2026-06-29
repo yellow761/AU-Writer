@@ -13,10 +13,6 @@
   <img src="https://img.shields.io/badge/License-GPLv3-red?style=for-the-badge&logo=gnu" alt="License">
 </p>
 
-<p align="center">
-  <img src="screenshot.png" alt="AU Writer Screenshot" width="600">
-</p>
-
 ## ✨ Features
 
 - 🚀 Simple and clean interface like Rufus
