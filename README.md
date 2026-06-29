@@ -112,9 +112,6 @@ sudo -E python3 au_writer.py
 
 - ⚠️ **ALL DATA** on the USB drive will be DESTROYED!
 - 🔒 Requires sudo privileges (shown in terminal)
-- 💡 For Windows ISO: Recommended MBR + NTFS + UEFI
-- 💡 For Linux ISO: Recommended MBR + FAT32 + no UEFI
-- 💡 For Windows To Go: Recommended GPT + NTFS + UEFI
 
 ## 🖥️ Create Desktop Shortcut
 
