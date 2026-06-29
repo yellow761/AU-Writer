@@ -28,7 +28,7 @@ cd AU-Writer
 chmod +x au_writer.py
 sudo -E python3 au_writer.py
 
-Debian/Ubuntu:
+**Debian/Ubuntu:**
 bash
 
 sudo apt install python3 python3-gi python3-gi-cairo gir1.2-gtk-3.0 parted dosfstools ntfs-3g e2fsprogs util-linux udev coreutils
@@ -37,7 +37,7 @@ cd AU-Writer
 chmod +x au_writer.py
 sudo -E python3 au_writer.py
 
-Fedora:
+**Fedora:**
 bash
 
 sudo dnf install python3 python3-gobject python3-gobject-cairo gtk3 parted dosfstools ntfs-3g e2fsprogs util-linux systemd-udev coreutils
