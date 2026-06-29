@@ -1,203 +1,50 @@
-AU Writer - A simple and convenient tool for writing ISO images to USB drives. Specially optimized for Arch Linux.
+# AU Writer - Arch USB Writer
 
-<p align="center"> <img src="https://img.shields.io/badge/Platform-Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux" alt="Arch Linux"> <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python" alt="Python"> <img src="https://img.shields.io/badge/GTK-3.0-7C4AFF?style=for-the-badge&logo=gtk" alt="GTK"> <img src="https://img.shields.io/badge/License-GPLv3-red?style=for-the-badge&logo=gnu" alt="License"> </p><p
+A simple and convenient tool for writing ISO images to USB drives. Specially optimized for Arch Linux.
 
-✨ Features
+<p align="center"> <img src="https://img.shields.io/badge/Platform-Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux" alt="Arch Linux"> <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python" alt="Python"> <img src="https://img.shields.io/badge/GTK-3.0-7C4AFF?style=for-the-badge&logo=gtk" alt="GTK"> <img src="https://img.shields.io/badge/License-GPLv3-red?style=for-the-badge&logo=gnu" alt="License"> <img src="https://img.shields.io/badge/Platform-Linux-FCC624?style=for-the-badge&logo=linux" alt="Linux"> </p>
 
-    🚀 Simple and clean interface like Rufus
-    🌐 Dual language support: English / Русский
-    💾 Write any ISO images (Linux, Windows, etc.)
-    🔧 Format options: Partition scheme (MBR/GPT) and File system (FAT32/NTFS)
-    📊 Real-time progress display
-    🛑 Stop writing at any time
-    🐙 Open source on GitHub
+<p align="center"> <img src="screenshot.png" alt="AU Writer Screenshot" width="650"> </p>
 
-📦 Requirements
+## ✨ Features
+🚀 Simple and clean interface like Rufus | 🌐 Dual language support: English / Русский | 💾 Write any ISO images (Linux, Windows, etc.) | 🔧 Format options: Partition scheme (MBR/GPT) and File system (FAT32/NTFS) | 📊 Real-time progress display | 🛑 Stop writing at any time | 🐙 Open source on GitHub
 
-    OS: Arch Linux (also works on Debian/Ubuntu/Fedora)
-    Python: 3.x
-    GTK: 3.0
-    Additional: sudo, parted, dd, lsblk, udevadm, ntfs-3g, dosfstools
+## 📦 Requirements
+OS: Arch Linux / Debian / Ubuntu / Fedora | Python: 3.x | GTK: 3.0 | Utilities: sudo, parted, dd, lsblk, udevadm, ntfs-3g, dosfstools
 
-🔧 Installation
+## 🔧 Installation
 
-Quick Install (Arch Linux)
+**Arch Linux:** git clone https://github.com/yellow761/AU-Writer.git && cd AU-Writer && sudo pacman -S python python-gobject gtk3 cairo python-cairo parted dosfstools ntfs-3g e2fsprogs util-linux systemd coreutils && chmod +x au_writer.py && sudo -E python3 au_writer.py
 
-# Clone the repository
-git clone https://github.com/yellow761/AU-Writer.git
-cd AU-Writer
+**Ubuntu/Debian:** git clone https://github.com/yellow761/AU-Writer.git && cd AU-Writer && sudo apt update && sudo apt install python3 python3-gi python3-gi-cairo gir1.2-gtk-3.0 parted dosfstools ntfs-3g e2fsprogs util-linux udev coreutils wget && chmod +x au_writer.py && sudo -E python3 au_writer.py
 
-# Install dependencies
-sudo pacman -S python python-gobject gtk3 cairo python-cairo parted dosfstools ntfs-3g e2fsprogs util-linux systemd coreutils
+**Fedora:** git clone https://github.com/yellow761/AU-Writer.git && cd AU-Writer && sudo dnf install python3 python3-gobject python3-gobject-cairo gtk3 parted dosfstools ntfs-3g e2fsprogs util-linux systemd-udev coreutils wget && chmod +x au_writer.py && sudo -E python3 au_writer.py
 
-# Make executable
-chmod +x au_writer.py
+## 🚀 Usage
+1. Select ISO – Click "Select ISO" and choose your ISO file | 2. Select USB – Choose your USB drive from the dropdown | 3. Configure options – Format before writing (recommended), Partition scheme (MBR/GPT), File system (FAT32/NTFS), Language (English/Русский) | 4. Write – Click "Write" and confirm | 5. Wait – Progress bar shows writing status | 6. Done – USB is ready to use
 
-# Run
-sudo -E python3 au_writer.py
+## 📋 Recommended Settings
+Linux ISO: MBR + FAT32 | Windows 10/11: GPT + NTFS | Windows (legacy): MBR + NTFS | Windows To Go: GPT + NTFS
 
-Install on Debian/Ubuntu
+## 🖥️ Desktop Shortcut
+cat > ~/.local/share/applications/au-writer.desktop << 'EOF' && echo "[Desktop Entry]" >> ~/.local/share/applications/au-writer.desktop && echo "Name=AU Writer" >> ~/.local/share/applications/au-writer.desktop && echo "Name[ru]=AU Writer" >> ~/.local/share/applications/au-writer.desktop && echo "Comment=Arch USB Writer - Write ISO images to USB drives" >> ~/.local/share/applications/au-writer.desktop && echo "Comment[ru]=Arch USB Writer - Запись ISO-образов на USB" >> ~/.local/share/applications/au-writer.desktop && echo "Exec=sudo -E python3 /home/$(whoami)/AU-Writer/au_writer.py" >> ~/.local/share/applications/au-writer.desktop && echo "Icon=drive-removable-media-usb" >> ~/.local/share/applications/au-writer.desktop && echo "Terminal=true" >> ~/.local/share/applications/au-writer.desktop && echo "Type=Application" >> ~/.local/share/applications/au-writer.desktop && echo "Categories=System;Utility;" >> ~/.local/share/applications/au-writer.desktop && echo "StartupNotify=true" >> ~/.local/share/applications/au-writer.desktop && EOF
 
-# Clone the repository
-git clone https://github.com/yellow761/AU-Writer.git
-cd AU-Writer
+## 🔧 Troubleshooting
+**Cannot open display:** export DISPLAY=:0 && sudo -E python3 au_writer.py | **Authorization required:** xhost +SI:localuser:root && sudo python3 au_writer.py | **USB not detected:** lsblk -o NAME,SIZE,TYPE,MOUNTPOINT or dmesg | tail -20 | **Missing dependencies:** Arch: sudo pacman -S ntfs-3g dosfstools parted | Ubuntu: sudo apt install ntfs-3g dosfstools parted | Fedora: sudo dnf install ntfs-3g dosfstools parted
 
-# Install dependencies
-sudo apt update
-sudo apt install python3 python3-gi python3-gi-cairo gir1.2-gtk-3.0 parted dosfstools ntfs-3g e2fsprogs util-linux udev coreutils
+## 🛠️ Development
+**Debug mode:** python3 -d au_writer.py | **Add language:** Add dictionary to LANGUAGES, update detect_language(), add to lang_combo | **AUR package:** makepkg -si
 
-# Make executable
-chmod +x au_writer.py
+## 📝 License
+GPLv3 - Copyright (C) 2024 AU Writer Contributors. This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-# Run
-sudo -E python3 au_writer.py
+## 🌟 Acknowledgments
+Inspired by Rufus (Windows) | Built with Python and GTK | Optimized for Arch Linux community
 
-Install on Fedora
+## 📬 Contact
+GitHub: yellow761/AU-Writer | Issues: Report a bug | Discussions: Join the conversation
 
-# Clone the repository
-git clone https://github.com/yellow761/AU-Writer.git
-cd AU-Writer
-
-# Install dependencies
-sudo dnf install python3 python3-gobject python3-gobject-cairo gtk3 parted dosfstools ntfs-3g e2fsprogs util-linux systemd-udev coreutils
-
-# Make executable
-chmod +x au_writer.py
-
-# Run
-sudo -E python3 au_writer.py
-
-🚀 Usage
-
-Run the Program
-
-cd AU-Writer
-sudo -E python3 au_writer.py
-
-Step-by-Step Guide
-
-    Select ISO: Click "Select ISO" and choose your ISO file
-    Select USB: Choose your USB drive from the dropdown
-    Options:
-        ✅ Format before writing - Recommended for clean installation
-        📋 Partition scheme: MBR (legacy) / GPT (UEFI)
-        💾 File system: FAT32 / NTFS
-        🌐 Language - Switch between English/Русский
-    Write: Click "Write" and confirm
-    Wait: Progress bar shows writing status
-    Done: USB is ready to use!
-
-Important Notes
-
-    ⚠️ ALL DATA on the USB drive will be DESTROYED!
-    🔒 Requires sudo privileges (shown in terminal)
-    💡 For Windows ISO: Recommended GPT + NTFS
-    💡 For Linux ISO: Recommended MBR + FAT32
-    💡 For Windows To Go: Recommended GPT + NTFS
-
-🖥️ Create Desktop Shortcut
-
-cat > ~/.local/share/applications/au-writer.desktop << 'EOF'
-[Desktop Entry]
-Name=AU Writer
-Name[ru]=AU Writer
-Comment=Arch USB Writer - Write ISO images to USB drives
-Comment[ru]=Arch USB Writer - Запись ISO-образов на USB
-Exec=sudo -E python3 /home/$(whoami)/AU-Writer/au_writer.py
-Icon=drive-removable-media-usb
-Terminal=true
-Type=Application
-Categories=System;Utility;
-StartupNotify=true
-EOF
-
-🔧 Troubleshooting
-
-"cannot open display" Error
-
-# Fix display issues
-export DISPLAY=:0
-sudo -E python3 au_writer.py
-
-"Authorization required" Error
-
-# Allow root access to display
-xhost +SI:localuser:root
-sudo python3 au_writer.py
-
-Firefox/GitHub Button Not Working
-
-The program automatically tries multiple methods:
-1. GTK show_uri
-2. sudo -u user xdg-open
-3. Direct browser launch
-4. Dialog with URL
-
-USB Device Not Detected
-
-# Check USB devices
-lsblk -o NAME,SIZE,TYPE,MOUNTPOINT
-
-# Refresh USB list in the program
-# Click the "Refresh" button
-
-Missing Dependencies
-
-# Arch
-sudo pacman -S ntfs-3g dosfstools parted
-# Debian/Ubuntu
-sudo apt install ntfs-3g dosfstools parted
-# Fedora
-sudo dnf install ntfs-3g dosfstools parted
-
-🛠️ Development
-
-Run in Debug Mode
-
-# Show all log messages
-python3 -d au_writer.py
-
-Add New Language
-
-    Add new language dictionary in LANGUAGES variable
-    Update language detection in detect_language() method
-    Add language name to lang_combo dropdown
-
-Package as AUR
-
-# Build PKGBUILD for Arch Linux
-makepkg -si
-
-📝 License
-
-AU Writer is released under the GPLv3 License.
-
-Copyright (C) 2024 AU Writer Contributors
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-🌟 Acknowledgments
-
-    Inspired by Rufus (Windows)
-    Built with Python and GTK
-    Optimized for Arch Linux community
-
-📬 Contact
-
-    GitHub: yellow761/AU-Writer
-    Issues: Report a bug
-    Discussions: Join the conversation
-
-⭐ Star the Project
-
+## ⭐ Star the Project
 If you find AU Writer useful, please consider giving it a ⭐ on GitHub!
 
 <p align="center"> <a href="https://github.com/yellow761/AU-Writer"> <img src="https://img.shields.io/github/stars/yellow761/AU-Writer?style=social" alt="GitHub stars"> </a> <a href="https://github.com/yellow761/AU-Writer/network/members"> <img src="https://img.shields.io/github/forks/yellow761/AU-Writer?style=social" alt="GitHub forks"> </a> <a href="https://github.com/yellow761/AU-Writer/watchers"> <img src="https://img.shields.io/github/watchers/yellow761/AU-Writer?style=social" alt="GitHub watchers"> </a> </p>
