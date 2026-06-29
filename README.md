@@ -15,7 +15,6 @@
 
 ## ✨ Features
 
-- 🚀 Simple and clean interface like Rufus
 - 🌐 Dual language support: English / Русский
 - 💾 Write any ISO images (Linux, Windows, etc.)
 - 🔧 Auto-formatting before writing (optional)
