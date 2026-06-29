@@ -110,7 +110,7 @@ sudo dnf install ntfs-3g dosfstools parted
 - **AUR package:** `makepkg -si` - build Arch Linux package\
 
 ## License
-GPLv3 - Copyright (C) 2026 AU Writer Contributors
+This project is licensed under the **GPLv3 License** - see the [LICENSE](LICENSE) file for details.
 
 ## Links
 - **GitHub:** https://github.com/yellow761/AU-Writer
