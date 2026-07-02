@@ -61,6 +61,7 @@ sudo -E python3 au_writer.py
 4. Write – Click "Write" and confirm 
 5. Wait – Progress bar shows writing status 
 6. Done – USB is ready to use
+
 **Desktop Shortcut**
 ```bash
 cat > ~/.local/share/applications/au-writer.desktop << 'EOF'
