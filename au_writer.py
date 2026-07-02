@@ -60,7 +60,7 @@ LANGUAGES = {
         'file_system': 'File system:',
         'write': 'Write',
         'stop': 'Stop',
-        'version': 'AU Writer v1.0',
+        'version': 'AU Writer v1.1',
         'checking_mount': 'Checking mount...',
         'unmounting': 'Unmounting {}',
         'unmounted': 'Unmounting complete',
@@ -676,6 +676,7 @@ class AUWriterWindow(Gtk.Window):
             )
             
             iso_size = os.path.getsize(iso_path)
+            last_progress = 0
             
             while True:
                 line = self.process.stderr.readline()
@@ -683,19 +684,25 @@ class AUWriterWindow(Gtk.Window):
                     break
                 if line and 'bytes' in line:
                     try:
-                        numbers = re.findall(r'[\d.]+', line.replace(',', ''))
-                        if numbers and iso_size > 0:
-                            size = float(numbers[0])
-                            if 'MiB' in line or 'Mi' in line:
-                                size = size * 1024 * 1024
-                            elif 'GiB' in line or 'Gi' in line:
+                        match = re.search(r'([\d.]+)\s*([MG]?B)', line.replace(',', ''))
+                        if match:
+                            size = float(match.group(1))
+                            unit = match.group(2)
+                            
+                            if 'GB' in unit or 'GiB' in unit or 'G' in unit:
                                 size = size * 1024 * 1024 * 1024
-                            elif 'KB' in line or 'KiB' in line:
+                            elif 'MB' in unit or 'MiB' in unit or 'M' in unit:
+                                size = size * 1024 * 1024
+                            elif 'KB' in unit or 'KiB' in unit or 'K' in unit:
                                 size = size * 1024
                             
-                            progress = min(size / iso_size, 1.0)
-                            GLib.idle_add(self.update_progress, progress, 
-                                        self._('write_progress').format(progress * 100))
+                            if iso_size > 0:
+                                progress = min(size / iso_size, 1.0)
+                                if progress - last_progress >= 0.001:
+                                    last_progress = progress
+                                    percent = progress * 100
+                                    GLib.idle_add(self.update_progress, progress, 
+                                                self._('write_progress').format(percent))
                     except:
                         pass
             
@@ -805,4 +812,4 @@ if __name__ == "__main__":
             print("2. Run: xhost +SI:localuser:root")
             print("3. Run from local terminal (not SSH)")
         else:
-            print(f"Error: {e}")
+            print(f"Error: {e}")	
