@@ -10,7 +10,29 @@ A simple and convenient tool for writing ISO images to USB drives. Specially opt
 ## Requirements
 OS: Arch Linux / Debian / Ubuntu / Fedora | Python: 3.x | GTK: 3.0 | Utilities: sudo, parted, dd, lsblk, udevadm, ntfs-3g, dosfstools
 
-## Installation
+**Installation Git**
+
+**Arch Linux:**
+```bash
+sudo pacman -S git
+```
+
+**Ubuntu/Debian:**
+```bash
+sudo apt install git
+```
+
+**Fedora:**
+```bash
+sudo dnf install git
+```
+
+**Void:**
+```bash
+sudo xbps-install -S git
+```
+
+**Installation AU_Writer**
 
 **Arch Linux:**
 ```bash
