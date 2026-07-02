@@ -54,6 +54,12 @@ chmod +x au_writer.py
 # 5. Run
 sudo -E python3 au_writer.py
 ```
+**Void:**
+```bash
+# 1. Install au_writer.py
+# 2. Run
+sudo python3 au_writer.py
+```
 **Usage**
 1.Select ISO – Click "Select ISO" and choose your ISO file 
 2. Select USB – Choose your USB drive from the dropdown 
