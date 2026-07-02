@@ -10,7 +10,7 @@ A simple and convenient tool for writing ISO images to USB drives. Specially opt
 ## Requirements
 OS: Arch Linux / Debian / Ubuntu / Fedora | Python: 3.x | GTK: 3.0 | Utilities: sudo, parted, dd, lsblk, udevadm, ntfs-3g, dosfstools
 
-**Installation Git**
+## Installation Git
 
 **Arch Linux:**
 ```bash
@@ -32,7 +32,7 @@ sudo dnf install git
 sudo xbps-install -S git
 ```
 
-**Installation AU_Writer**
+## Installation AU_Writer
 
 **Arch Linux:**
 ```bash
